@@ -1,3 +1,5 @@
+<%= t('user.edit') %>
+
 <% @user.errors.full_messages.each do |msg| %>
   <div><%= msg %></div>
 <% end %>
@@ -8,4 +10,4 @@
       <%= f.label :email %><%= f.email_field :email %>
 <%= f.submit %>
 <% end %>
-<%= link_to '戻る', :back %>
+<%= link_to t('view.back'), :back %>

@@ -15,13 +15,18 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
+gem "jquery-turbolinks"
 gem 'nested_form_fields'
 gem 'nested_form'
-# gem 'devise'
+gem 'devise'
 gem 'enum_help'
 gem 'ransack'
 gem 'rails-i18n'
 gem 'faker'
+gem 'pry-byebug'
+gem 'select2-rails'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

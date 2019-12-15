@@ -14,14 +14,16 @@ ja:
     logout:  "ログアウト"
     signup:  "新規登録"
     search:  "検索"
+    forgot: "パスワードを忘れた？"
   recipe:
     index: "レシピ一覧"
-    name: "レシピ"
+    name: "メニュー"
     content: "紹介"
     picture: "画像"
-    show: "詳細"
+    show: "レシピの詳細"
     new: "レシピの投稿"
-    curry_type: "カレータイプ"
+    edit: "レシピの編集"
+    curry_type: "カレーのタイプ"
   enums:
     recipe:
       curry_type:
@@ -32,25 +34,39 @@ ja:
         vege: 野菜
         other: 他
 
+
   user:
-    name: "名前"
+    name: "ユーザー"
     picture: "画像"
     email: "メールアドレス"
     password: "パスワード"
     password_confirmation: "確認用パスワード"
+    show: "ユーザーの詳細"
+    edit: "ユーザーの編集"
   material:
     name: "材料"
     amount: "分量"
   comment:
     content:　"コメント"
   flow:
-    content: "料理方法"
+    content: "調理方法"
     picture: "料理画像"
   shop:
     name: "店名"
+    address: "住所"
+    index: "お店の一覧"
+    new: "お店の登録"
   view:
     update: "更新日"
-
+    add: "追加"
+    delete: "削除"
+    edit: "編集"
+    show: "詳細"
+    back: "戻る"
+    like: お気に入り
+    dislike: お気に入り解除
+    comment: "コメント"
+    post: 投稿
 
 
 

@@ -15,56 +15,55 @@
  *= require_self
  */
 html{
-
-
+  font-size: 100%;
 }
 /* , a:hover */
-a, a:visited, a:focus{
-    text-decoration: none;
-    color:black;
-}
 
  body{
-   /* background-color: #ffff; */
+  font-size: 1rem;
+  display: block;
+  background-color: #fff;
+  font-family: "メイリオ";
+  color: #595960;
+ }
+
+ a, a:visited, a:focus{
+   text-decoration: none;
+   color: #333333;
+ }
+
+
+ #logo{
+  margin: 10px 0 10px 12px;
+  padding: 5px 5px 5px 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Helvetica Neue" , Helvetica ;
+  border:solid 4px #FFD700;
  }
 
 
  header{
    margin-top:0px;
+   font-size: 0.9rem;
    width:100%;
    height: 60px;
-   /* background-color: #ef6019e0; */
-   font:white;
-   border-bottom: solid 1px #d2c8be;
+   background-color: #fff;
+   border-bottom: solid 4px #FFD700;
  }
 
 
  nav li{
-   color: black;
-   color: black;
    float: left;
-   line-height: 30px;
+   /* line-height: 30px; */
    text-align: center;
-   margin: 15px 0 10px 10px;
+   margin: 20px 0 10px 10px;
  }
 
  li {
      list-style: none;
   }
 
-  ol li{
-    list-style: decimal;
-  }
-
-
-
-.search{
-   float: right;
-   margin-right: 50px;
- }
-.search li{
-  float: left;
-}
 
  #new_button{
    width: 100px;

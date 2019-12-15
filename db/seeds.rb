@@ -15,15 +15,25 @@
 #                password_confirmation: password,
 #                )
 # end
+# #
+# User.create!(name: "test",
+#              email: "test@test.com",
+#              password: "password",
+#              password_confirmation: "password",
+#              )
 #
-User.create!(name: "test",
-             email: "test@test.com",
-             password: "password",
-             password_confirmation: "password",
-             )
+#  User.create!(name: "user",
+#               email: "user@user.com",
+#               password: "password",
+#               password_confirmation: "password",
+#               )
 
-User.create!(name: "test2",
-            email: "test2@test.com",
-            password: "password",
-            password_confirmation: "password",
-            )
+
+Shop.create(name: "A",
+             address: "千葉県",
+             user_id: 1)
+ Shop.create(name: "B",
+              address: "東京都",
+              user_id: 1
+              )
+

@@ -1,7 +1,7 @@
 
 <%= form_with(model:[recipe, comment])  do |f| %>
 
-<%= f.label :comment %>
-<li id="comment_area"><%= f.text_area :content %></li>
+<%= f.label t('view.comment') %>
+<%= f.text_area :content %>
 <%= f.submit %>
 <% end %>

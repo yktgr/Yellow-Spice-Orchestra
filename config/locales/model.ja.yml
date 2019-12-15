@@ -7,27 +7,28 @@ ja:
       commnent: "コメント"
       recipe_like: "お気に入りレシピ"
       flow: "調理方法"
-      shop: "店"
-
+      shop: "お店"
     attributes:
       recipe:
-        name: "レシピ"
-        content: "紹介"
+        name: "メニュー"
+        content: "レシピの紹介"
         picture: "画像"
-        curry_type: "カレータイプ"
+        curry_type: "カレーのタイプ"
+        shop_id: "ショップ"
       user:
         name: "名前"
         picture: "画像"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
-      material:
+      materials:
         name: "材料"
         amount: "分量"
       comment:
         content:　"コメント"
-      flow:
-        content: "料理方法"
+      flows:
+        content: "調理方法"
         picture: "料理画像"
       shop:
-        name: 店名
+        name: "店名"
+        address: "住所"

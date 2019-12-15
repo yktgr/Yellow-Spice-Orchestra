@@ -1,0 +1,12 @@
+<h1><%= t('shop.index')%></h1>
+          <%= search_form_for @q  do |s| %>
+          <li><%= s.label :name_cont, t('shop.name') %></li>
+          <li><%= s.search_field :name_cont  %></li>
+          <li><%= s.submit t('header.search') %></li>
+          <% end %>
+<% @shops.each do |shop| %>
+    <li><%= t('shop.name')%>|<%= shop.name %>
+    <%= t('shop.address')%>|<%= shop.address %>
+    <%= t('shop.update') %><%= shop.updated_at.strftime('%Y/%m/%d') %></li>
+    <%= link_to t('view.edit'),edit_shop_path(shop.id) if current_user.id == shop.user_id %></li>
+<% end %>
