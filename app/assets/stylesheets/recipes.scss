@@ -1,6 +1,6 @@
 
 
-// 一覧
+// 共通
 .recipe_box{
   width:200px;
   height: 350px;
@@ -17,7 +17,7 @@
   left: 4px;
   width:190px;
   height: 190px;
-  background-color: grey;
+  background-color: #f5f5f5;
   border: none;
 }
 
@@ -37,15 +37,20 @@
   margin-left: 5px;
 }
 
-.recipe_tbl tr{
+table.recipe_tbl tr{
 border-bottom: solid 1px #FFD700;
-vertical-align: middle;
+text-align: middle;
 }
 
-.recipe_tbl td{
+table.recipe_tbl td{
   font-size: 0.8rem;
   text-align:center;
   padding-left: 10px;
+}
+
+#no_pic{
+  padding-left: 45px;
+  padding-top: 45px;
 }
 
 #button{
@@ -61,26 +66,81 @@ vertical-align: middle;
   display: block;
 }
 
-
-.submit{
-  width: 100%;
+#search{
+  list-style: none;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding-bottom: 0px;
 }
-
-
-
 // 投稿画面
 
-.new_material{
-  display: inline-block;
-  margin-top: 0px;
-  margin-right: 0px;
+.new_recipe{
+font-size: 0.9rem;
+height: 400px;
+list-style: none;
 }
 
-// ユーザー
-.new_flow{
+.new_recipe table{
+  height: 350px;
+  padding-right: 50px;
+}
+
+.new_recipe tr{
+  border-bottom: solid 1px #C0C0C0;
+  line-height: normal;
+  vertical-align: middle;
+}
+
+.new_material{
+  list-style: none;
+  font-size: 0.9rem;
+}
+.new_material li{
+  margin-bottom: 3px;
+
+}
+
+#new_flow {
+  padding-top:10px;
+  list-style-type: decimal;
+  font-size: 0.9rem;
+  height: 300px;
+  border-bottom: solid 1px #C0C0C0;
+}
+#flow_pic {
+margin-top: 30px;
+margin-left: 50px;
+}
+
+#flow_content {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+// レシピ詳細
+table.material {
+  width: 100%;
+  border: solid 1px #C0C0C0;
+}
+table.material td ,
+table.material th{
+  border: solid 1px #C0C0C0;
+  text-align: center;
+  line-height: 30px;
+}
+
+
+
+.flow {
+  width: 200px;
+  margin-top: 20px;
+  margin-right: 5px;
   float:left;
-  clear: both;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 10px;
+  border: solid 1px #C0C0C0;
+}
+
+#flow_show {
+  height: 100px;
+  margin-top: 20px;
+  padding: 5px;
 }

@@ -38,6 +38,7 @@ ja:
   user:
     name: "ユーザー"
     picture: "画像"
+    post: "投稿"
     email: "メールアドレス"
     password: "パスワード"
     password_confirmation: "確認用パスワード"
@@ -58,6 +59,7 @@ ja:
     new: "お店の登録"
   view:
     update: "更新日"
+    created: "登録日"
     add: "追加"
     delete: "削除"
     edit: "編集"
@@ -66,7 +68,8 @@ ja:
     like: お気に入り
     dislike: お気に入り解除
     comment: "コメント"
-    post: 投稿
+    post: "投稿者"
+    flow: "ステップ"
 
 
 

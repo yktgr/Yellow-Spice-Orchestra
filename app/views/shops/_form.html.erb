@@ -1,6 +1,8 @@
+
 <%= form_for @shop,  local: true do |f| %>
   <%= f.hidden_field:user_id, value: current_user.id %>
   <li><%= f.label :name %><%= f.text_field :name %></li>
   <li><%= f.label :address %><%= f.text_field :address %></li>
-  <li><%= f.submit %></li></div>
+  <li><%= f.submit %></li>
+  <li><%= link_to t('view.back'), recipes_path %></li>
 <% end %>

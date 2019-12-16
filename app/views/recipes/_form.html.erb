@@ -1,45 +1,82 @@
 
-
 <%= form_with model:@recipe, url: choose_new_or_edit, local: true do |f| %>
-        <% if @recipe.picture.url.present? %>
-          <li><%= image_tag @recipe.picture.url %></li>
-          <li><%= f.label 'delete' %><%= f.check_box :remove_picture %></li>
-        <% else %>
-          <li><%= f.label t('recipe.picture') %></li>
-          <li><%= f.file_field :picture %></li>
-        <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="new_recipe">
+    <table>
+    <% if @recipe.picture.url.present? %>
+      <tr>
+        <th></th><td><%= image_tag @recipe.picture.url %></td>
+      </tr>
+      <tr>
+        <th><%= f.label 'delete' %></th>
+        <td><%= f.check_box :remove_picture %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <th><%= f.label t('recipe.picture') %></th>
+        <td><%= f.file_field :picture %></td>
+      </tr>
 
-        <%= f.hidden_field:user_id, value: current_user.id %>
-        <li><%= f.label t('recipe.name') %><%= f.text_field :name%></li>
-        <li><%= f.label t('recipe.curry_type') %><%= f.select :curry_type,
-            Recipe.curry_types_i18n.keys.map{|k| [Recipe.curry_types_i18n[k], k]} , include_blank: false, prompt: true %></li>
-        <li><%= f.label t('recipe.content') %><%= f.text_area :content %></li>
-        <li><%= f.label t('shop.name') %><%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: false, prompt:true %></li>
-  <div>
+    <% end %>
+    <%= f.hidden_field:user_id, value: current_user.id %>
+    <tr>
+      <th><%= f.label t('shop.name') %></th>
+      <td><%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: false, prompt:true %></td>
+    </tr>
+    <tr>
+      <th><%= f.label t('recipe.name') %></th>
+      <td><%= f.text_field :name%></td>
+    </tr>
+    <tr>
+      <th><%= f.label t('recipe.curry_type') %></th>
+      <td><%= f.select :curry_type,
+        Recipe.curry_types_i18n.keys.map{|k| [Recipe.curry_types_i18n[k], k]} , include_blank: false, prompt: true %></td>
+    </tr>
+    <tr>
+      <th><%= f.label t('recipe.content') %></th>
+      <td><%= f.text_area :content, placeholder: "１００文字以内", size:"20x5" %></td>
+    </tr>
 
-<%= f.label t('material.name') %><%= f.label t('material.amount') %>
-            <%= f.nested_fields_for :materials do |material| %>
-              <li id="button"><%= material.text_field :name %><%= material.text_field :amount %>
-              <%= material.remove_nested_fields_link t('view.delete'), role: 'button' %></li>
-            <% end %>
-      <%= f.add_nested_fields_link :materials,  t('view.add'), role: 'button'%>
-<div>
-<ol>
-<div>
-<%= f.nested_fields_for :flows do |flow| %>
-<li></li>
-<table>
-  <tr><%= flow.label t('flow.picture') %><%= flow.file_field :picture %></tr>
-  <tr><%= flow.label t('flow.content') %><%= flow.text_area :content %></tr>
-  <tr><%= flow.remove_nested_fields_link  t('view.delete'), role: 'button' %></tr>
-  </table><br>
-<% end %>
-</div>
-</ol>
-
-<p><%= f.add_nested_fields_link :flows, t('view.add'), role: 'button'%><p>
+  </table>
+  <li><%= f.submit %><%= link_to "", recipes_path %></li>
   </div>
 
-<div class="submit">
-<li><%= f.submit %></li></div>
+  <div class="new_material">
+    <li id="title"><%= f.label t('material.name') %></li>
+    <%= f.nested_fields_for :materials do |material| %>
+    <li><%= material.text_field :name, placeholder: "材料名" %><%= material.text_field :amount, placeholder: "分量" %>
+    <button type="button" class=" btn btn-danger btn-sm"><%= material.remove_nested_fields_link t('view.delete'), role: 'button' %></button>
+    <% end %>
+    <button type="button" class=" btn btn-success btn-sm"><%= f.add_nested_fields_link :materials,  t('view.add'), role: 'button'%></button>
+  </div>
+</div>
+
+
+
+
+<div class="row">
+<div class="col-md-6">
+
+<ol>
+<%= f.nested_fields_for :flows do |flow| %>
+
+<div id="new_flow">
+
+<li><%= t('flow.content') %></li>
+<div id="flow_pic">
+  <%= flow.label t('flow.picture') %>
+<%= flow.file_field :picture %>
+</div>
+
+<div id="flow_content">
+<%= flow.text_area :content, placeholder: "１００文字以内", size:"20x5" %>
+<button type="button" class=" btn btn-danger btn-sm"><%= flow.remove_nested_fields_link  t('view.delete'), role: 'button' %></button>
+</div>
+
+<% end %>
+<button type="button" class=" btn btn-success btn-sm"><%= f.add_nested_fields_link :flows, t('view.add'), role: 'button'%></button>
+</div>
+</div>
+</div>
 <% end %>

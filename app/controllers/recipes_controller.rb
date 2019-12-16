@@ -14,8 +14,8 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    0.times{ @recipe.materials.build}
-    0.times{ @recipe.flows.build }
+    3.times{ @recipe.materials.build}
+    3.times{ @recipe.flows.build }
   end
 
   def create

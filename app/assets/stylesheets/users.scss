@@ -1,3 +1,29 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.user{
+  list-style: none;
+  position: relative;
+  margin-bottom: 30px;
+  line-height: 50px;
+}
+
+
+.user_recipe{
+  list-style: none;
+  display:block;
+  float: left;
+  both: clear;
+}
+
+.user_like{
+  list-style: none;
+  float: left;
+}
+
+#title{
+  font-weight: bold;
+  color: #FF9900;
+}

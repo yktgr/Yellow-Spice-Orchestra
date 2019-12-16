@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     @recipe = Recipe.find(params[:id])
   end
 
+  def set_shop
+    @shop = Shop.find(params[:id])
+  end
+
   def after_sign_in_path_for(resource)
     recipes_path
   end

@@ -54,15 +54,12 @@ html{
 
 
  nav li{
+   list-style: none;
    float: left;
-   /* line-height: 30px; */
    text-align: center;
    margin: 20px 0 10px 10px;
  }
 
- li {
-     list-style: none;
-  }
 
 
  #new_button{

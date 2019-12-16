@@ -1,3 +1,28 @@
 // Place all the styles related to the shops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.shop_new li{
+  list-style: none;
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+
+.shop{
+  width: 800px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 30px;
+
+}
+
+.shop th{
+text-align: center;
+padding-right: 10px;
+background-color:  #C0C0C0;
+}
+
+.shop td{
+text-align: left;
+border-bottom: solid 1px;
+padding-left: 10px;
+}

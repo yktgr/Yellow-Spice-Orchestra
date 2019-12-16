@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action:set_user,only:[:show, :edit, :update]
   before_action :authenticate_user!
+
   def show
     @recipes = @user.recipes.all
     @recipe_likes =  current_user.recipe_likes

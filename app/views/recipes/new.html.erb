@@ -1,10 +1,11 @@
-<h1><%= t('recipe.new')%></h1>
-<% if @recipe.errors.any? %>
-    <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
-      <%= render 'form' %>
-<%= link_to "戻る", recipes_path %>
+<div class="container">
+  <h2><%= t('recipe.new')%></h2>
+  <% if @recipe.errors.any? %>
+      <ul>
+        <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+        <%= render 'form' %>
+</div>
