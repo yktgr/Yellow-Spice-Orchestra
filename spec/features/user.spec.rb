@@ -3,7 +3,7 @@ RSpec.feature "ユーザー機能", type: :feature do
 
   background do
     FactoryBot.create(:user)
-    FactoryBot.create(:second_user)
+    FactoryBot.create(:user_second)
   end
 
   scenario "ユーザー登録" do
@@ -22,7 +22,7 @@ RSpec.feature "ユーザー機能", type: :feature do
           fill_in 'パスワード', with: 'password'
           click_button 'ログイン'
           expect(page).to have_content 'ログインしました。'
-end
+      end
 
     scenario "ログアウト機能" do
       visit root_path

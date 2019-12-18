@@ -11,7 +11,6 @@ RSpec.feature "タスク管理機能", type: :feature do
         fill_in 'メールアドレス', with: 'user1@user.com'
         fill_in 'パスワード', with: 'password'
         click_button 'ログイン'
-        expect(page).to have_content 'ログインしました。'
     end
 
   scenario "レシピ一覧のテスト" do
@@ -34,18 +33,18 @@ RSpec.feature "タスク管理機能", type: :feature do
     fill_in 'recipe[name]', with: 'テストカレー'
     fill_in 'recipe[content]', with: 'この店の人気メニューをコピーしました。'
     select '他',from: 'recipe[curry_type]'
-    fill_in 'recipe[materials_attributes][0][name]', with: 'テストスパイス'
+    fill_in 'recipe[materials_attributes][0][name]', with: 'テスト'
     fill_in 'recipe[materials_attributes][0][amount]', with: '一式'
-    fill_in 'recipe[materials_attributes][1][name]', with: 'テストスパイス'
+    fill_in 'recipe[materials_attributes][1][name]', with: 'テスト'
     fill_in 'recipe[materials_attributes][1][amount]', with: '一式'
-    fill_in 'recipe[materials_attributes][2][name]', with: 'テストスパイス'
+    fill_in 'recipe[materials_attributes][2][name]', with: 'テスト'
     fill_in 'recipe[materials_attributes][2][amount]', with: '一式'
 
-    fill_in 'recipe[materials_attributes][0][name]', with: 'テストスパイス'
+    fill_in 'recipe[materials_attributes][0][name]', with: 'テスト'
     fill_in 'recipe[materials_attributes][0][amount]', with: '一式'
-    fill_in 'recipe[materials_attributes][1][name]', with: 'テストスパイス'
+    fill_in 'recipe[materials_attributes][1][name]', with: 'テスト'
     fill_in 'recipe[materials_attributes][1][amount]', with: '一式'
-    fill_in 'recipe[materials_attributes][2][name]', with: 'テストスパイス'
+    fill_in 'recipe[materials_attributes][2][name]', with: 'テスト'
     fill_in 'recipe[materials_attributes][2][amount]', with: '一式'
 
     fill_in 'recipe[flows_attributes][0][content]', with: 'テスト'
