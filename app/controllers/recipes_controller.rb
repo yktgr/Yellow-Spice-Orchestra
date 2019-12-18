@@ -1,11 +1,21 @@
 class RecipesController < ApplicationController
   before_action:set_recipe,only:[:edit,:update,:show,:destroy]
+<<<<<<< HEAD
   before_action :authenticate_user!, only: [:index, :new, :create]
   def index
     @recipes =  Recipe.order(created_at: :desc)
+=======
+
+  before_action :authenticate_user!, only: [:new, :create]
+
+  def index
+    @recipes =  Recipe.all.updated
+
+>>>>>>> 74bebb23b2b5dead2bf3964ea93a23a6a7048c2e
     @q = Recipe.ransack(params[:q])
     @result =  @q.result(distinct: true).order(created_at: :desc)
     @recipes =  @result if @result.present?
+
   end
 
   def new
