@@ -9,16 +9,17 @@
   </head>
   <header class="header">
       <% if user_signed_in? %>
-      <nav>
-        <li id="logo">Yellow Spice Orchestra</li><li></li>
-        <li><%= link_to t('header.top'), recipes_path %></li><li>|</li>
-        <li><%= link_to t('header.logout'), destroy_user_session_path, method: :delete %></li><li>|</li>
-        <li><%= link_to t('header.mypage'),user_path(current_user.id) %></li><li>|</li>
-        <li><%= link_to t('shop.index'),shops_path %></li><li>|</li>
-        <li><%= link_to t('shop.new'),new_shop_path %></li><li>|</li>
-        <li><%= link_to t('recipe.new'),new_recipe_path %></li>
-</nav>
-</header>
+        <header class="header">
+        <nav>
+          <li id="logo">Yellow Spice Orchestra</li><li></li>
+          <li><%= link_to t('header.top'), recipes_path %></li><li>|</li>
+          <li><%= link_to t('header.logout'), destroy_user_session_path, method: :delete %></li><li>|</li>
+          <li><%= link_to t('header.mypage'),user_path(current_user.id) %></li><li>|</li>
+          <li><%= link_to t('shop.index'),shops_path %></li><li>|</li>
+          <li><%= link_to t('shop.new'),new_shop_path %></li><li>|</li>
+          <li><%= link_to t('recipe.new'),new_recipe_path %></li>
+        </nav>
+        </header>
       <% else %>
       <header class="header">
       <nav>

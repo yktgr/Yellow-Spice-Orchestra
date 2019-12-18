@@ -4,50 +4,49 @@
     <div class="col-md-6">
       <div class="new_recipe">
     <table>
-    <% if @recipe.picture.url.present? %>
-      <tr>
-        <th></th><td><%= image_tag @recipe.picture.url %></td>
-      </tr>
-      <tr>
-        <th><%= f.label 'delete' %></th>
-        <td><%= f.check_box :remove_picture %></td>
-      </tr>
-    <% else %>
-      <tr>
-        <th><%= f.label t('recipe.picture') %></th>
-        <td><%= f.file_field :picture %></td>
-      </tr>
+      <% if @recipe.picture.url.present? %>
+        <tr>
+          <th></th><td><%= image_tag @recipe.picture.url %></td>
+        </tr>
+        <tr>
+          <th><%= f.label t('view.delete') %></th>
+          <td><%= f.check_box :remove_picture %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <th><%= f.label t('recipe.picture') %></th>
+          <td><%= f.file_field :picture %></td>
+        </tr>
+      <% end %>
 
-    <% end %>
-    <%= f.hidden_field:user_id, value: current_user.id %>
-    <tr>
-      <th><%= f.label t('shop.name') %></th>
-      <td><%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: false, prompt:true %></td>
-    </tr>
-    <tr>
-      <th><%= f.label t('recipe.name') %></th>
-      <td><%= f.text_field :name%></td>
-    </tr>
-    <tr>
-      <th><%= f.label t('recipe.curry_type') %></th>
-      <td><%= f.select :curry_type,
-        Recipe.curry_types_i18n.keys.map{|k| [Recipe.curry_types_i18n[k], k]} , include_blank: false, prompt: true %></td>
-    </tr>
-    <tr>
-      <th><%= f.label t('recipe.content') %></th>
-      <td><%= f.text_area :content, placeholder: "１００文字以内", size:"20x5" %></td>
-    </tr>
-
-  </table>
-  <li><%= f.submit %><%= link_to "", recipes_path %></li>
+      <%= f.hidden_field:user_id, value: current_user.id %>
+      <tr>
+        <th><%= f.label t('shop.name') %></th>
+        <td><%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: false, prompt:true %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('recipe.name') %></th>
+        <td><%= f.text_field :name%></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('recipe.curry_type') %></th>
+        <td><%= f.select :curry_type,
+          Recipe.curry_types_i18n.keys.map{|k| [Recipe.curry_types_i18n[k], k]} , include_blank: false, prompt: true %></td>
+      </tr>
+      <tr>
+        <th><%= f.label t('recipe.content') %></th>
+        <td><%= f.text_area :content, placeholder: "１００文字以内", size:"20x5" %></td>
+      </tr>
+      </table>
+    <li><%= f.submit %><%= link_to "", recipes_path %></li>
   </div>
 
   <div class="new_material">
     <li id="title"><%= f.label t('material.name') %></li>
-    <%= f.nested_fields_for :materials do |material| %>
+      <%= f.nested_fields_for :materials do |material| %>
     <li><%= material.text_field :name, placeholder: "材料名" %><%= material.text_field :amount, placeholder: "分量" %>
     <button type="button" class=" btn btn-danger btn-sm"><%= material.remove_nested_fields_link t('view.delete'), role: 'button' %></button>
-    <% end %>
+      <% end %>
     <button type="button" class=" btn btn-success btn-sm"><%= f.add_nested_fields_link :materials,  t('view.add'), role: 'button'%></button>
   </div>
 </div>

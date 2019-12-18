@@ -1,7 +1,21 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#comment_area{
-  height: 200px;
-  width:5000px;
+
+#comment{
+    line-height: 30px;
+    list-style: none;
+    margin-top: 20px;
+}
+
+#area{
+  height: 100px;
+  width: 300px;
+  background-color:  #f5f5f5;
+  margin-bottom: 20px;
+
+}
+
+#post_user{
+  font-size: 0.8rem;
 }

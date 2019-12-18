@@ -1,13 +1,32 @@
-<%= t('user.edit') %>
-
+<div class="container">
+<h2><%= t('user.edit') %></h2>
 <% @user.errors.full_messages.each do |msg| %>
   <div><%= msg %></div>
 <% end %>
-
 <%= form_for @user do |f| %>
-      <%= f.label :image %><%= f.file_field :picture %>
-      <%= f.label :name %><%= f.text_field :name %>
-      <%= f.label :email %><%= f.email_field :email %>
+<table>
+  <% if @user.picture.url.present? %>
+    <tr>
+      <th></th><td><%= image_tag @user.picture.url %></td>
+    </tr>
+    <tr>
+      <th><%= f.label t('view.delete') %></th>
+      <td><%= f.check_box :remove_picture %></td>
+    </tr>
+  <% else %>
+  <tr>
+    <th><%= f.label :picture %></th><td><%= f.file_field :picture %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <th><%= f.label :name %></th><td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :email %></th><td><%= f.email_field :email %></td>
+  </tr>
+</table>
+
 <%= f.submit %>
 <% end %>
 <%= link_to t('view.back'), :back %>
+</div>

@@ -1,4 +1,3 @@
-
 <div class="container">
 <h2><%= t('recipe.index')%></h2>
   <%= search_form_for @q, url: recipes_path do |f| %>
@@ -10,9 +9,9 @@
   <div class="recipe_box">
     <div class="picture">
       <% if recipe.picture.url.present? %>
-        <div><%= image_tag recipe.picture.url if recipe.picture.url.present? %></div>
+        <div><%= image_tag recipe.picture.url, size:'190x190'%></div>
       <% else %>
-        <div id="no_pic"><%= image_tag 'no_photo.png', size:'100x100'%></div>
+        <div id="no_pic"><%= image_tag 'no_photo.png', size:'90x90'%></div>
       <% end %>
     </div>
     <div class="recipe_inf">

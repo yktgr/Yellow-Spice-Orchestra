@@ -16,106 +16,93 @@
 #                )
 # end
 # # #
-# User.create!(name: "user1",
-#              email: "user1@user.com",
-#              password: "password",
-#              password_confirmation: "password",
-#              )
-#
-#  User.create!(name: "user2",
-#               email: "user2@user.com",
-#               password: "password",
-#               password_confirmation: "password",
-#               )
-# User.create!(name: "user3",
-#              email: "user3@user.com",
-#              password: "password",
-#              password_confirmation: "password",
-#              )
-#
-#  User.create!(name: "user4",
-#               email: "user4@user.com",
-#               password: "password",
-#               password_confirmation: "password",
-#               )
-#
-# Shop.create(name: "Aカレー",
-#              address: "千葉県",
-#              user_id: 1)
-# Shop.create(name: "Bカレー",
-#             address: "東京都",
-#             user_id: 2
-# )
-# Shop.create(name: "Cカレー",
-#             address: "東京都",
-#             user_id: 2
-# )
-# Shop.create(name: "Dカレー",
-#             address: "東京都",
-#             user_id: 3
-# )
-# Shop.create(name: "Eカレー",
-#              address: "東京都",
-#              user_id: 4
-# )
+User.create!(name: "user1",
+             email: "user1@user.com",
+             password: "password",
+             password_confirmation: "password",
+             )
 
-Recipe.create(id:1,
+ User.create!(name: "user2",
+              email: "user2@user.com",
+              password: "password",
+              password_confirmation: "password",
+              )
+User.create!(name: "user3",
+             email: "user3@user.com",
+             password: "password",
+             password_confirmation: "password",
+             )
+
+ User.create!(name: "user4",
+              email: "user4@user.com",
+              password: "password",
+              password_confirmation: "password",
+              )
+
+Shop.create(name: "Aカレー",
+             address: "千葉県",
+             user_id: 1)
+Shop.create(name: "Bカレー",
+            address: "東京都",
+            user_id: 2
+)
+Shop.create(name: "Cカレー",
+            address: "東京都",
+            user_id: 2
+)
+Shop.create(name: "Dカレー",
+            address: "東京都",
+            user_id: 3
+)
+Shop.create(name: "Eカレー",
+             address: "東京都",
+             user_id: 4
+)
+3.times do |i|
+i =  i + 1
+r = Recipe.create(
   name: "チキンカレー",
   content: "この店の人気メニューをコピーしました。",
-  curry_type: 0,
-  shop_id: 1,
+  curry_type: i,
+  shop_id: i,
   user_id: 2
 )
-
-Material.create{
-name:"玉ねぎ",
-amount:"大２個",
-recipe_id: 1
- }
- Material.create{
- name:"鶏肉",
- amount:"２００g",
- recipe_id: 1
-  }
-
-
-Recipe.create(id:2,
-  name: "バターチキンカレー",
-  content: "この店の人気メニューをコピーしました。",
-  curry_type: 0,
-  shop_id: 3,
-  user_id: 4
+r.materials.create(
+  name: "玉ねぎ",
+  amount: "一個",
 )
 
-Recipe.create(id:3,
-  name: "ベジカレー",
-  content: "この店の人気メニューをコピーしました。",
-  curry_type: 0,
-  shop_id: 1,
-  user_id: 2
+r.materials.create(
+  name: "トマト",
+  amount: "一個",
 )
 
-
-Recipe.create(id:4,
-  name: "チキンカレー",
-  content: "この店の人気メニューをコピーしました。",
-  curry_type: 0,
-  shop_id: 1,
-  user_id: 2
+r.materials.create(
+  name: "ターメリック",
+  amount: "小さじ半分"
+)
+r.materials.create(
+  name: "コリアンダー",
+  amount: "小さじ半分"
 )
 
-Recipe.create(id:5,
-  name: "バターチキンカレー",
-  content: "この店の人気メニューをコピーしました。",
-  curry_type: 0,
-  shop_id: 3,
-  user_id: 4
+r.materials.create(
+  name: "クミン",
+  amount: "小さじ半分"
 )
 
-Recipe.create(id:4,
-  name: "ベジカレー",
-  content: "この店の人気メニューをコピーしました。",
-  curry_type: 4,
-  shop_id: 4,
-  user_id: 4
+r.flows.create(
+  content: "玉ねぎを炒める"
 )
+r.flows.create(
+  content: "#{:curry_type[i] }を炒める"
+)
+
+r.flows.create(
+  content: "スパイスを炒める"
+)
+
+r.flows.create(
+  content: "１，２を投入し煮込む"
+)
+end

@@ -65,6 +65,12 @@ table.recipe_tbl td{
   text-align: center;
   display: block;
 }
+#recipe_del{
+  list-style: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
 
 #search{
   list-style: none;
@@ -99,6 +105,7 @@ list-style: none;
   margin-bottom: 3px;
 
 }
+
 
 #new_flow {
   padding-top:10px;

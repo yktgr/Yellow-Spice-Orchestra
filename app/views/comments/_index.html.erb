@@ -1,10 +1,14 @@
 
-<ul>
-  <% @comments.each do |comment| %>
-    <% if comment.id.present? %>
-        <li><%= comment.content %></li>
-        <li><%= t('user.name') %><%= User.find(comment.user_id).name %></li>
-        <li><%= link_to t('view.delete'), recipe_comment_path(comment.recipe.id, comment.id), method: :delete, remote: true %></li>
+<div class="container">
+  <div id= comment>
+    <% @comments.each do |comment| %>
+      <% if comment.id.present? %>
+        <li id="post_user"><%= t('view.post') %>
+          <%= User.find(comment.user_id).name %>
+          <%= link_to t('view.delete'), recipe_comment_path(comment.recipe.id, comment.id), method: :delete, remote: true %></li>
+        <li id="area"><%= comment.content %></li>
+        <li></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+</div>

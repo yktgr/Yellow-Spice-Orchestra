@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
   before_action:set_recipe,only:[:edit,:update,:show,:destroy]
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:index, :new, :create]
   def index
-    @recipes =  Recipe.all.updated
+    @recipes =  Recipe.order(created_at: :desc)
     @q = Recipe.ransack(params[:q])
-    @result =  @q.result(distinct: true)
+    @result =  @q.result(distinct: true).order(created_at: :desc)
     @recipes =  @result if @result.present?
   end
 
@@ -24,8 +24,11 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe.destroy
-    redirect_to recipes_path
+    if  @recipe.destroy
+      redirect_to recipes_path,notice:'削除しました'
+    else
+      redirect_to recipes_path,notice:'削除できません'
+    end
   end
 
   def edit

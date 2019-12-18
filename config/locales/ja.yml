@@ -24,6 +24,7 @@ ja:
     new: "レシピの投稿"
     edit: "レシピの編集"
     curry_type: "カレーのタイプ"
+    count: 'レシピ数'
   enums:
     recipe:
       curry_type:

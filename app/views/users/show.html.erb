@@ -1,63 +1,70 @@
 <div class="container">
 <h2><%= @user.name %>の<%=t('header.mypage') %></h2>
-<div class="user">
-  <li><%= link_to t('view.edit') , edit_user_path(@user.id) %></li>
-  <div class="picture">
-    <% if @user.picture.url.present? %>
-      <div><%= image_tag @user.picture.url, size:'100x100' if @user.picture.url.present? %></div>
-    <% else %>
-      <div id="no_pic"><%= image_tag 'no_photo.png', size:'100x100'%></div>
-    <% end %>
-  </div>
+  <div class="user">
+    <li><%= link_to t('view.edit') , edit_user_path(@user.id) %> |
+    <%= link_to t('view.delete'),user_path(@user.id), method: :delete if current_user.id == @user.id %></li>
+
+    <div class="picture">
+      <% if @user.picture.url.present? %>
+        <div><%= image_tag @user.picture.url, size:'190x190' %></div>
+      <% else %>
+        <div id="no_pic"><%= image_tag 'no_photo.png', size:'90x90'%></div>
+      <% end %>
+    </div>
   </div>
 
-<div class="user_recipe">
-  <li id="title"><%= "#{@user.name}"%>の<%= t('user.post') %></li>
-  <% @recipes.each do |recipe| %>
+  <div class="user_recipe">
+    <li id="title"><%= "#{@user.name} の#{t('user.post')}" if @recipes.present? %></li>
+    <% @recipes.each do |recipe| %>
+
+      <div class="recipe_box">
+        <div class="picture">
+          <% if recipe.picture.url.present? %>
+            <div><%= image_tag recipe.picture.url, size:'190x190' %></div>
+          <% else %>
+            <div id="no_pic"><%= image_tag 'no_photo.png', size:'90x90'%></div>
+            <% end %>
+        </div>
+
+        <div class="recipe_inf">
+          <table class="recipe_tbl" >
+            <tr><th><%= t('shop.name') %></th><td><%= Shop.find(recipe.shop_id).name %></td></tr>
+            <tr><th><%= t('recipe.name') %></th><td><%= recipe.name %></td></tr>
+            <tr><th><%= t('recipe.curry_type') %></th><td><%= recipe.curry_type_i18n %></td></tr>
+            <tr><th><%= t('view.post') %></th><td><%= User.find(recipe.user_id).name %></td></tr>
+            <tr><th><%= t('view.update') %></th><td><%= recipe.updated_at.strftime('%Y/%m/%d') %></td></tr>
+          </table>
+          <div id="button"><%= link_to t('recipe.show'),recipe_path(recipe.id), role: 'button'%></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="user_like">
+  <li id="title"><%= t('view.like') if @recipe_likes.present?%></li>
+  <% @recipe_likes.each do |like| %>
+
     <div class="recipe_box">
       <div class="picture">
-        <% if recipe.picture.url.present? %>
-          <div><%= image_tag recipe.picture.url if recipe.picture.url.present? %></div>
+        <% if like.recipe.picture.url.present? %>
+          <div><%= image_tag like.recipe.picture.url, size:'190x190' %></div>
         <% else %>
-          <div id="no_pic"><%= image_tag 'no_photo.png', size:'100x100'%></div>
+          <div id="no_pic"><%= image_tag 'no_photo.png', size:'90x90' %></div>
         <% end %>
       </div>
+
       <div class="recipe_inf">
         <table class="recipe_tbl" >
-          <tr><th><%= t('shop.name') %></th><td><%= Shop.find(recipe.shop_id).name %></td></tr>
-          <tr><th><%= t('recipe.name') %></th><td><%= recipe.name %></td></tr>
-          <tr><th><%= t('recipe.curry_type') %></th><td><%= recipe.curry_type_i18n %></td></tr>
-          <tr><th><%= t('view.post') %></th><td><%= User.find(recipe.user_id).name %></td></tr>
-          <tr><th><%= t('view.update') %></th><td><%= recipe.updated_at.strftime('%Y/%m/%d') %></td></tr>
+          <tr><th><%= t('shop.name') %></th><td><%= Shop.find(like.recipe.shop_id).name %></td></tr>
+          <tr><th><%= t('recipe.name') %></th><td><%= like.recipe.name %></td></tr>
+          <tr><th><%= t('recipe.curry_type') %></th><td><%= like.recipe.curry_type_i18n %></td></tr>
+          <tr><th><%= t('view.post') %></th><td><%= User.find(like.user_id).name %></td></tr>
+          <tr><th><%= t('view.update') %></th><td><%= like.recipe.updated_at.strftime('%Y/%m/%d') %></td></tr>
         </table>
-        <div id="button"><%= link_to t('recipe.show'),recipe_path(recipe.id), role: 'button'%></div>
+
+        <div id="button"><%= link_to t('recipe.show'),recipe_path(like.recipe.id), role: 'button'%></div>
       </div>
     </div>
   <% end %>
-</div>
-
-<div class="user_like">
-<li id="title"><%= t('view.like') %></li>
-<% @recipe_likes.each do |like| %>
-  <div class="recipe_box">
-    <div class="picture">
-      <% if like.recipe.picture.url.present? %>
-        <div><%= image_tag like.recipe.picture.url if like.recipe.picture.url.present? %></div>
-      <% else %>
-        <div id="no_pic"><%= image_tag 'no_photo.png', size:'100x100'%></div>
-      <% end %>
     </div>
-    <div class="recipe_inf">
-      <table class="recipe_tbl" >
-        <tr><th><%= t('shop.name') %></th><td><%= Shop.find(like.recipe.shop_id).name %></td></tr>
-        <tr><th><%= t('recipe.name') %></th><td><%= like.recipe.name %></td></tr>
-        <tr><th><%= t('recipe.curry_type') %></th><td><%= like.recipe.curry_type_i18n %></td></tr>
-        <tr><th><%= t('view.post') %></th><td><%= User.find(like.user_id).name %></td></tr>
-        <tr><th><%= t('view.update') %></th><td><%= like.recipe.updated_at.strftime('%Y/%m/%d') %></td></tr>
-      </table>
-      <div id="button"><%= link_to t('recipe.show'),recipe_path(like.recipe.id), role: 'button'%></div>
-    </div>
-  </div>
-<% end %>
-</div>
 </div>

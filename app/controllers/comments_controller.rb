@@ -14,7 +14,6 @@ def create
 end
 
 def destroy
-  # @recipe = Recipe.find(params[:recipe_id])
   @comment = Comment.find(params[:id])
   @comment.destroy
   redirect_to recipe_path(@comment.recipe_id)

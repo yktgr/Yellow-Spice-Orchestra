@@ -1,21 +1,12 @@
 <div class="container">
-<div class="row">
+  <div class="row">
     <div class="col-sm-2 col-md-4">
-      <div>
-        <% unless @recipe.user_id == current_user.id %>
-          <% if @favorite.present? %>
-            <button type="button" class=" btn btn-danger btn-sm"><%= link_to t('view.dislike'), recipe_like_path(id: @favorite.id), method: :delete %></button>
-          <% else %>
-            <button type="button" class=" btn btn-danger btn-sm"><%= link_to t('view.like'),  recipe_likes_path(recipe_id: @recipe.id), method: :post %></button>
-            <% end %>
-        <% end %>
-      </div>
         <div class="recipe_box">
           <div class="picture">
             <% if @recipe.picture.url.present? %>
-              <div><%= image_tag @recipe.picture.url, size:'100x100' if @recipe.picture.url.present? %></div>
+              <div><%= image_tag @recipe.picture.url, size:'190x190' %></div>
             <% else %>
-              <div id="no_pic"><%= image_tag 'no_photo.png', size:'100x100'%></div>
+              <div id="no_pic"><%= image_tag 'no_photo.png', size:'90x90' %></div>
             <% end %>
           </div>
           <div class="recipe_inf">
@@ -25,35 +16,51 @@
               <tr><th><%= t('recipe.curry_type') %></th><td><%= @recipe.curry_type_i18n %></td></tr>
               <tr><th><%= t('view.post') %></th><td><%= User.find(@recipe.user_id).name %></td></tr>
               <tr><th><%= t('view.update') %></th><td><%= @recipe.updated_at.strftime('%Y/%m/%d') %></td></tr>
-      </table>
-  </div>
-  </div>
-</div>
-
-<div  class="col-sm-2 col-md-4">
-        <table class="material">
-          <caption><%= t('material.name') %></caption>
-          <tr><th><%= t('material.name') %></th><th><%= t('material.amount') %></th></tr>
-          <% @recipe.materials.each do |material|  %>
-          <tr><td><%= material.name %></td><td><%= material.amount %></td></tr>
+            </table>
+            <% if current_user.id == @recipe.user_id %>
+            <li id="recipe_del"><%= link_to t('view.edit'),edit_recipe_path(@recipe.id)  %>
+              <%= link_to t('view.delete'),recipe_path(@recipe.id), method: :delete %></li>
+              <% end %>
+            <% unless @recipe.user_id == current_user.id %>
+              <% if @favorite.present? %>
+                <button type="button" class=" btn btn-danger btn-sm"><%= link_to t('view.dislike'), recipe_like_path(id: @favorite.id), method: :delete %></button>
+              <% else %>
+                <button type="button" class=" btn btn-danger btn-sm"><%= link_to t('view.like'),  recipe_likes_path(recipe_id: @recipe.id), method: :post %></button>
+              <% end %>
             <% end %>
-          </table>
-</div>
-</div>
+          </div>
+        </div>
+    </div>
 
-<div class="row">
-<div  class="col-sm-1 col-md-12">
-<% @recipe.flows.each.with_index(1) do |flow,i|  %>
-  <div class="flow">
-  <div><%= "#{i}" %>. <%= t('flow.content') %></div>
-        <% if flow.picture.url.present? %>
-          <div class="picture"><%= image_tag flow.picture.url if flow.picture.url.present? %></div>
-        <% else %>
-          <div class="picture"><p id="no_pic"><%= image_tag 'no_photo.png', size:'100x100'%></p></div>
+    <div  class="col-sm-2 col-md-4">
+      <table class="material">
+        <caption><%= t('material.name') %></caption>
+          <tr><th><%= t('material.name') %></th><th><%= t('material.amount') %></th></tr>
+        <% @recipe.materials.each do |material|  %>
+          <tr><td><%= material.name %></td><td><%= material.amount %></td></tr>
         <% end %>
-      <div id="flow_show"><%= flow.content %></div>
-      </div>
-  <% end %>
-</div>
-</div>
+      </table>
+    </div>
   </div>
+<div class="row">
+  <div  class="col-sm-1 col-md-8">
+    <% @recipe.flows.each.with_index(1) do |flow,i|  %>
+      <div class="flow">
+        <div><%= "#{i}" %>. <%= t('flow.content') %></div>
+          <% if flow.picture.url.present? %>
+            <div class="picture"><%= image_tag flow.picture.url , size:'190x190' %></div>
+          <% else %>
+            <div class="picture"><p id="no_pic"><%= image_tag 'no_photo.png', size:'90x90'%></p></div>
+          <% end %>
+        <div id="flow_show"><%= flow.content %></div>
+      </div>
+    <% end %>
+  </div>
+<div class="row">
+  <div class="col-sm-2 col-md-4">
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: {comments: @comments, recipe: @recipe} %>
+      <%= render partial: 'comments/form', locals: {comment: @comment, recipe: @recipe} %>
+    </div>
+  </div>
+</div>
