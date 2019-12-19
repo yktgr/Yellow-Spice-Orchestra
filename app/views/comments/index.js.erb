@@ -1,2 +1,5 @@
+
+$("textarea").val('');
 $("#comments_area").html("<%= j(render 'comments/index', {comments: @comment.recipe.comments, recipe: @comment.recipe} ) %>")
-$("textarea").val('')
+$("#comment").removeAttr("disabled");
+$("#comments_area").removeAttr("disabled");

@@ -16,7 +16,6 @@
 //= require jquery/dist/jquery.js
 //= require jquery3
 //= require jquery.turbolinks
-//= require jquery_ujs
 //= require select2
 //= require nested_form_fields
 //= require bootstrap/dist/js/bootstrap.min

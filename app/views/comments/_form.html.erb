@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div id= comment>
+  <div id= "comment">
     <li><%= form_with( model:[recipe, comment])  do |f| %></li>
     <li><%= f.label t('view.comment') %></li>
     <li><%= f.text_area :content %></li>
